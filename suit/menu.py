@@ -1,5 +1,6 @@
 from copy import deepcopy
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 class ChildItem(object):
@@ -109,6 +110,7 @@ class MenuManager(object):
 
         return self.mark_active(menu_items)
 
+    @staff_member_required
     def map_native_apps(self):
         """
         Make dictionary of native apps and models for easier matching
